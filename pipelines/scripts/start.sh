@@ -26,4 +26,4 @@ else
  cmd_opts="$cmd_opts --config-file=$CONFIG_FILE"
 fi
 
-/var/weaviate/weaviate $cmd_opts > /var/weaviate/first_run.log 2>&1
+exec /var/weaviate/weaviate $cmd_opts > /var/weaviate/first_run.log 2>&1

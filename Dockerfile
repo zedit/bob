@@ -1,9 +1,13 @@
-#Run on Ubuntu
+# Run on Ubuntu
 FROM ubuntu:16.04
 
-# Set the Workdir to weaviate
+# Set config args
+ARG config 
+ARG action_schema
+ARG thing_schema
+
+# Crearing the dir of weaviate
 RUN mkdir -p /var/weaviate/config && cd /var/weaviate
-WORKDIR /var/weaviate
 
 # Install needed packages and scripts
 RUN echo "BUILDING weaviate_nightly_linux_amd64.zip"
@@ -18,8 +22,15 @@ RUN apt-get -qq update && apt-get -qq install -y jq curl zip wget && \
 # Expose dgraph ports
 EXPOSE 80
 
+# Copying config files with using args
+COPY $config /var/weaviate/
+COPY $action_schema /var/weaviate/
+COPY $thing_schema /var/weaviate/
+
+# Copy script in container
 COPY ./pipeline/scripts/start.sh /start.sh
 
+# Set workdir
 WORKDIR /
 
 # Run!
