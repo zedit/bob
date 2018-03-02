@@ -2,9 +2,9 @@
 FROM ubuntu:16.04
 
 # Set config args
-ARG config 
-ARG action_schema
-ARG thing_schema
+ARG config=./weaviate.conf.json 
+ARG action_schema=./schema/test-action-schema.json
+ARG thing_schema=./schema/test-thing-schema.json
 
 # Crearing the dir of weaviate
 RUN mkdir -p /var/weaviate/config && cd /var/weaviate
