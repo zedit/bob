@@ -11,13 +11,13 @@ if [ -n PORT ]; then
 fi
 
 if [ -n HOST ]; then
- cmd_opts="$cmd_opts --hoste=$HOST"
+ cmd_opts="$cmd_opts --host=$HOST"
 fi
 
 if [ -z CONFIG ]; then
  cmd_opts="$cmd_opts --config=docker"
 else
- cmd_opts="$cmd_opts --confite=$CONFIG"
+ cmd_opts="$cmd_opts --config=$CONFIG"
 fi
 
 if [ -z CONFIG_FILE ]; then

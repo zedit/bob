@@ -11,7 +11,7 @@ services:
         - BD_SCHEME=
         - PORT=
         - HOST=
-        - CONFIT=
+        - CONFIiG=
         - CONFIG_FILE=
    db:
      image: cassandra:3
