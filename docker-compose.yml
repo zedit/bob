@@ -1,0 +1,24 @@
+version: '3'
+services:
+  weaviate:
+    build:
+      context: .
+      args:
+        - config
+        - action_schema
+        - thing_schmea
+      envoironment:
+        - BD_SCHEME=
+        - PORT=
+        - HOST=
+        - CONFIT=
+        - CONFIG_FILE=
+   db:
+     image: cassandra:3
+     volumes: 
+       - ~/cassandra:/var/lib/cassandra
+     port: 
+       - 7000:7000
+       - 9042:9042
+     envoironment: 
+       CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1 
