@@ -11,8 +11,8 @@
                 }
             },
             "schemas": {
-                "Thing": "test/schema/test-thing-schema.json",
-                "Action": "test/schema/test-action-schema.json"
+                "Thing": "./schema/test-thing-schema.json",
+                "Action": "./schema/test-action-schema.json"
             },
             "mqttEnabled": false,
             "limit": 100,

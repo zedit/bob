@@ -21,7 +21,7 @@ else
 fi
 
 if [ -z CONFIG_FILE ]; then
- cmd_opts="$cmd_opts --config-file=./config/weaviate.conf.json"
+ cmd_opts="$cmd_opts --config-file=./weaviate.conf.json"
 else
  cmd_opts="$cmd_opts --config-file=$CONFIG_FILE"
 fi

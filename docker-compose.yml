@@ -7,18 +7,18 @@ services:
         - config
         - action_schema
         - thing_schmea
-      envoironment:
-        - BD_SCHEME=
-        - PORT=
-        - HOST=
-        - CONFIiG=
-        - CONFIG_FILE=
-   db:
-     image: cassandra:3
-     volumes: 
-       - ~/cassandra:/var/lib/cassandra
-     port: 
-       - 7000:7000
-       - 9042:9042
-     envoironment: 
-       CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1 
+    environment:
+      - BD_SCHEME
+      - PORT
+      - HOST
+      - CONFIiG
+      - CONFIG_FILE
+  db:
+    image: cassandra:3
+    volumes: 
+      - ~/cassandra:/var/lib/cassandra
+    ports: 
+      - 7000:7000
+      - 9042:9042
+    environment: 
+      CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1 

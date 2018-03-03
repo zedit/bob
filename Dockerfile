@@ -14,9 +14,8 @@ RUN echo "BUILDING weaviate_nightly_linux_amd64.zip"
 
 RUN apt-get -qq update && apt-get -qq install -y jq curl zip wget && \
     wget -q -O /var/weaviate/weaviate.zip https://storage.googleapis.com/weaviate-dist/nightly/weaviate_nightly_linux_amd64.zip && \
-    unzip -o -q -j weaviate.zip && \
+    cd /var/weaviate && unzip -o -q -j /var/weaviate/weaviate.zip && \
     rm /var/weaviate/weaviate.zip && \
-    rm -rf weaviate_nightly_linux_amd64.zip && \
     chmod +x /var/weaviate/weaviate
     
 # Expose dgraph ports
@@ -28,11 +27,10 @@ COPY $action_schema /var/weaviate/
 COPY $thing_schema /var/weaviate/
 
 # Copy script in container
-COPY ./pipeline/scripts/start.sh /start.sh
+COPY ./pipelines/scripts/start.sh /start.sh
 
 # Set workdir
 WORKDIR /
 
 # Run!
 ENTRYPOINT ["/start.sh"]
-
