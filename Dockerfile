@@ -23,8 +23,8 @@ EXPOSE 80
 
 # Copying config files with using args
 COPY $config /var/weaviate/
-COPY $action_schema /var/weaviate/
-COPY $thing_schema /var/weaviate/
+COPY $action_schema /var/weaviate/schema/
+COPY $thing_schema /var/weaviate/schema/
 
 # Copy script in container
 COPY ./pipelines/scripts/start.sh /start.sh
