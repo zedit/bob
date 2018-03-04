@@ -6,6 +6,11 @@ ARG config=./weaviate.conf.json
 ARG action_schema=./schema/test-action-schema.json
 ARG thing_schema=./schema/test-thing-schema.json
 
+# Set parametrase build args
+ARG release=nightly
+ARG platform=linux
+ARG architecture=amd64
+
 # Crearing the dir of weaviate
 RUN mkdir -p /var/weaviate/config && cd /var/weaviate
 
@@ -13,7 +18,7 @@ RUN mkdir -p /var/weaviate/config && cd /var/weaviate
 RUN echo "BUILDING weaviate_nightly_linux_amd64.zip"
 
 RUN apt-get -qq update && apt-get -qq install -y jq curl zip wget python-pip && \
-    wget -q -O /var/weaviate/weaviate.zip https://storage.googleapis.com/weaviate-dist/nightly/weaviate_nightly_linux_amd64.zip && \
+    wget -q -O /var/weaviate/weaviate.zip "https://storage.googleapis.com/weaviate-dist/nightly/weaviate_${release}_${platform}_${architecture}.zip" && \
     cd /var/weaviate && unzip -o -q -j /var/weaviate/weaviate.zip && \
     rm /var/weaviate/weaviate.zip && \
     chmod +x /var/weaviate/weaviate && \

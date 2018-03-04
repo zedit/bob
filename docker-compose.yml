@@ -21,4 +21,4 @@ services:
       - "db"
     environment:
       - WEAVIATE_CASSANDRA_DB_HOST=db
-      - CONFIG=cassandra
+      - WEAVIATE_CONFIG=cassandra

@@ -7,13 +7,13 @@ else
 fi
 
 if [ -n $WEAVIATE_PORT ]; then
- cmd_opts="$cmd_opts --port=11121"
+ cmd_opts="$cmd_opts --port=80"
 else
  cmd_opts="$cmd_opts --port=$WEAVIATE_PORT"
 fi
 
 if [ -n $WEAVIATE_HOST ]; then
- cmd_opts="$cmd_opts --host=localhost"
+ cmd_opts="$cmd_opts --host=0.0.0.0"
 else
  cmd_opts="$cmd_opts --host=$WEAVIATE_HOST"
 fi
@@ -30,7 +30,9 @@ else
  cmd_opts="$cmd_opts --config-file=$WEAVIATE_CONFIG_FILE"
 fi
 
-if [ $CONFIG == "cassandra" ]; then
+echo "$WEAVIATE_CONFIG"
+
+if [ "$WEAVIATE_CONFIG" == "cassandra" ]; then
  until cqlsh --cqlversion=3.4.4 "$WEAVIATE_CASSANDRA_DB_HOST" -e exit; do
    >&2 echo "Cassandra is unavailable - sleeping"
    sleep 1
