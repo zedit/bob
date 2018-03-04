@@ -5,7 +5,7 @@
             "database": {
                 "name": "cassandra",
                 "database_config" : {
-                    "host": "127.0.0.1",
+                    "host": "db",
                     "port": 7000,
                     "keyspace": "weaviate"
                 }

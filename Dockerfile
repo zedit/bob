@@ -12,11 +12,12 @@ RUN mkdir -p /var/weaviate/config && cd /var/weaviate
 # Install needed packages and scripts
 RUN echo "BUILDING weaviate_nightly_linux_amd64.zip"
 
-RUN apt-get -qq update && apt-get -qq install -y jq curl zip wget && \
+RUN apt-get -qq update && apt-get -qq install -y jq curl zip wget python-pip && \
     wget -q -O /var/weaviate/weaviate.zip https://storage.googleapis.com/weaviate-dist/nightly/weaviate_nightly_linux_amd64.zip && \
     cd /var/weaviate && unzip -o -q -j /var/weaviate/weaviate.zip && \
     rm /var/weaviate/weaviate.zip && \
-    chmod +x /var/weaviate/weaviate
+    chmod +x /var/weaviate/weaviate && \
+    pip install cqlsh
     
 # Expose dgraph ports
 EXPOSE 80

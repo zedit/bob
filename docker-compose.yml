@@ -1,12 +1,5 @@
 version: '3.2'
 services:
-  weaviate:
-    build:
-      context: .
-      args:
-        - config
-        - action_schema
-        - thing_schmea
   db:
     image: cassandra:3
     volumes: 
@@ -17,3 +10,15 @@ services:
     environment: 
       CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1
       CASSANDRA_START_RPC: "true"
+  weaviate:
+    build:
+      context: .
+      args:
+        - config
+        - action_schema
+        - thing_schmea
+    depends_on:
+      - "db"
+    environment:
+      - WEAVIATE_CASSANDRA_DB_HOST=db
+      - CONFIG=cassandra
