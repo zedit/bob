@@ -30,8 +30,6 @@ else
  cmd_opts="$cmd_opts --config-file=$WEAVIATE_CONFIG_FILE"
 fi
 
-echo "$WEAVIATE_CONFIG"
-
 if [ "$WEAVIATE_CONFIG" == "cassandra" ]; then
  until cqlsh --cqlversion=3.4.4 "$WEAVIATE_CASSANDRA_DB_HOST" -e exit; do
    >&2 echo "Cassandra is unavailable - sleeping"
@@ -44,5 +42,4 @@ fi
 
 
 cd /var/weaviate/
-echo $cmd_opts
 exec ./weaviate $cmd_opts
