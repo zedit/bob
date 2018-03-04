@@ -1,30 +1,30 @@
 #!/bin/bash
 
-if [ -n WEAVIATE_SCHEME ]; then
+if [ -n $WEAVIATE_SCHEME ]; then
  cmd_opts="$cmd_opts --scheme=http"
 else
  cmd_opts="$cmd_opts --scheme=$WEAVIATE_SCHEME"
 fi
 
-if [ -n WEAVIATE_PORT ]; then
+if [ -n $WEAVIATE_PORT ]; then
  cmd_opts="$cmd_opts --port=11121"
 else
  cmd_opts="$cmd_opts --port=$WEAVIATE_PORT"
 fi
 
-if [ -n WEAVIATE_HOST ]; then
+if [ -n $WEAVIATE_HOST ]; then
  cmd_opts="$cmd_opts --host=localhost"
 else
  cmd_opts="$cmd_opts --host=$WEAVIATE_HOST"
 fi
 
-if [ -n WEAVIATE_CONFIG ]; then
+if [ -n $WEAVIATE_CONFIG ]; then
  cmd_opts="$cmd_opts --config=cassandra"
 else
  cmd_opts="$cmd_opts --config=$WEAVIATE_CONFIG"
 fi
 
-if [ -n WEAVIATE_CONFIG_FILE ]; then
+if [ -n $WEAVIATE_CONFIG_FILE ]; then
  cmd_opts="$cmd_opts --config-file=./weaviate.conf.json"
 else
  cmd_opts="$cmd_opts --config-file=$WEAVIATE_CONFIG_FILE"
