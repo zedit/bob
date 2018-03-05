@@ -23,7 +23,6 @@ else
   echo "DB is not cassandra"
 fi
 
-
 cd /var/weaviate/
 
 # Starting main process of container
