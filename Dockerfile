@@ -33,10 +33,10 @@ COPY $action_schema /var/weaviate/schema/
 COPY $thing_schema /var/weaviate/schema/
 
 # Copy script in container
-COPY ./pipelines/scripts/start.sh /start.sh
+COPY ./weaviate-entrypoint.sh /var/weaviate/weaviate-entrypoint.sh
 
 # Set workdir
-WORKDIR /
+WORKDIR /var/weaviate/
 
 # Run!
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["./weaviate-entrypoint.sh"]

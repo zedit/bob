@@ -1,10 +1,15 @@
-# Weaviate [![Build Status](https://travis-ci.org/creativesoftwarefdn/weaviate.svg?branch=develop)](https://travis-ci.org/creativesoftwarefdn/weaviate/branches)
-
-**A decentralised semantic, graph based Internet of Things platform based on web-semantics, GraphQL and RESTful API's.**
-
-*Important Note:
-Weaviate is not fully production ready yet. Follow this repo or sign up for the [mailing list](http://eepurl.com/bRsMir) to stay informed about the progress. We do have nightly builds that you can use to test Weaviate*
-
 ## Documentation
 
-Documentation will soon be published on our website; you can sign-up to our [mailing list](http://eepurl.com/bRsMir)  to receive an email when the website is live.
+
+To build this app, you must clone repository in your directory and make "docker-compose up".
+
+Before your build you can add environment variables to override default values in docker-compose.yaml:
+
+WEAVIATE_SCHEME - the listeners to enable, this can be repeated and defaults to the schemes in the swagger spec (default: http)
+WEAVIATE_PORT - the port to listen on for insecure connections (defaults: 80) 
+WEAVIATE_HOST - the IP to listen on (default: localhost)
+WEAVIATE_CONFIG - the section inside the config file that has to be used (default: cassandra) 
+WEAVIATE_CONFIG_FILE - path to config file (default: ./weaviate.conf.json)
+
+CQLVERSION - Specify a particular CQL version (default: 3.4.4).
+
