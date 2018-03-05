@@ -30,14 +30,20 @@ else
  cmd_opts="$cmd_opts --config-file=$WEAVIATE_CONFIG_FILE"
 fi
 
+
 if [ "$WEAVIATE_CONFIG" == "cassandra" ]; then
+ counter=0
  until cqlsh --cqlversion=3.4.4 "$WEAVIATE_CASSANDRA_DB_HOST" -e exit; do
    >&2 echo "Cassandra is unavailable - sleeping"
-   sleep 1
+   sleep 3
+   ((counter++))
+   if [ $counter -eq 10 ]; then
+     echo "cassandra is not available trying to start without cassandra"
+     break 
+   fi
  done
 else
  echo "DB is not cassandra"
- exit 1
 fi
 
 
