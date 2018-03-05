@@ -9,7 +9,6 @@ Before your build you can add environment variables to override default values i
 
 | Variable name | Description |
 | ------------- | ----------- |
-
 | WEAVIATE_SCHEME | The listeners to enable, this can be repeated and defaults to the schemes in the swagger spec (default: http) |
 | WEAVIATE_PORT | The port to listen on for insecure connections (defaults: 80) |
 | WEAVIATE_HOST | The IP to listen on (default: localhost) |
