@@ -8,7 +8,6 @@ services:
       - 7000:7000
       - 9042:9042
     environment: 
-      CASSANDRA_BROADCAST_ADDRESS: 127.0.0.1
       CASSANDRA_START_RPC: "true"
   weaviate:
     build:
@@ -21,4 +20,3 @@ services:
       - "db"
     environment:
       - WEAVIATE_CASSANDRA_DB_HOST=db
-      - WEAVIATE_CONFIG=cassandra
